@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Manager Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app-container">
+      <!-- Background Elements -->
+      <div class="bg-gradient"></div>
+      <div class="bg-pattern"></div>
+
+      <!-- Main Tablet Interface -->
+      <div id="tablet-device" class="tablet-off">
+        <!-- Screen Bezel -->
+        <div class="tablet-bezel">
+          <!-- Screen Content -->
+          <div class="tablet-screen">
+            <!-- Status Bar -->
+            <div class="status-bar">
+              <div class="status-left">
+                <span class="time" id="current-time">14:32</span>
+              </div>
+              <div class="status-right">
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+              </div>
+            </div>
+
+            <!-- App Header -->
+            <header class="app-header">
+              <div class="header-content">
+                <div class="app-logo">
+                  <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                  </div>
+                  <div class="logo-text">
+                    <h1>RM Restaurantes</h1>
+                    <span>Os melhores restaurantes da cidade</span>
+                  </div>
+                </div>
+                <div class="header-actions">
+                  <button class="header-btn" id="notifications-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+              <!-- Active Restaurant Dashboard -->
+              <section id="active-restaurant" class="dashboard-section">
+                <!-- Will be populated dynamically -->
+              </section>
+
+              <!-- Restaurants Grid -->
+              <section id="restaurants-grid" class="restaurants-section">
+                <div class="section-header">
+                  <h2>Restaurantes:</h2>
+                  <div class="section-filters">
+                    <button class="filter-btn active" data-filter="all">
+                      Todos
+                    </button>
+                    <button class="filter-btn" data-filter="food">
+                      Alimentação
+                    </button>
+                    <button class="filter-btn" data-filter="drinks">
+                      Bebidas
+                    </button>
+                  </div>
+                </div>
+                <div class="restaurants-container">
+                  <!-- Will be populated dynamically -->
+                </div>
+              </section>
+            </main>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+              <button class="nav-btn active" data-page="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+              </button>
+
+              <button class="nav-btn" id="close-app">
+                <i class="fas fa-power-off"></i>
+                <span>Sair</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Templates -->
+    <!-- Active Restaurant Template -->
+    <template id="active-restaurant-template">
+      <div class="active-restaurant-card">
+        <div class="restaurant-bg">
+          <img class="restaurant-bg-img" src="" alt="" />
+          <div class="restaurant-overlay"></div>
+        </div>
+        <div class="restaurant-content">
+          <div class="restaurant-main">
+            <div class="restaurant-avatar">
+              <img class="restaurant-logo" src="" alt="" />
+            </div>
+            <div class="restaurant-info">
+              <h3 class="restaurant-title"></h3>
+              <div class="restaurant-meta">
+                <div class="rating-display">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="rating-text">4.5</span>
+                </div>
+                <div class="location-info">
+                  <button class="location-btn">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Definir GPS</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="restaurant-actions">
+            <div class="status-indicator">
+              <div class="status-light"></div>
+              <span class="status-text"></span>
+            </div>
+            <div class="action-buttons">
+              <button class="action-btn primary toggle-btn">
+                <i class="fas fa-power-off"></i>
+                <span>Alternar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Restaurant Card Template -->
+    <template id="restaurant-card-template">
+      <div class="restaurant-card" data-category="">
+        <div class="card-header">
+          <div class="restaurant-thumb">
+            <img class="thumb-img" src="" alt="" />
+            <div class="status-badge">
+              <span class="status-dot"></span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="card-action-btn location-btn" title="Definir GPS">
+              <i class="fas fa-location-arrow"></i>
+            </button>
+            <button
+              class="card-action-btn manager-btn"
+              title="Gerenciar"
+              style="display: none"
+            >
+              <i class="fas fa-crown"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4 class="restaurant-name"></h4>
+        </div>
+      </div>
+    </template>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
